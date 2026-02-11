@@ -57,8 +57,8 @@
 
 <div class="box">
     <h1>Will you be mine forever? 💕</h1>
-    <button id="yes" onclick="yesClicked()">Yes</button>
-    <button id="no">No</button>
+    <button id="yes" onclick="yesClicked()">Yes 😍</button>
+    <button id="no">No 🙈</button>
 </div>
 
 <script>
@@ -67,6 +67,23 @@
     noBtn.addEventListener("mouseenter", () => {
         // Move the button 10-15 times rapidly
         let moves = 0;
-        const maxMoves = 100; // you can adjust 10–15
+        const maxMoves = 50; // you can adjust 10–15
         const interval = setInterval(() => {
-            const x = Math.random() * (windo*
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+
+            moves++;
+            if (moves >= maxMoves) clearInterval(interval);
+        }, 100); // 100ms between moves, you can make it faster/slower
+    });
+
+    function yesClicked() {
+        alert("Yayyy! ❤️ I knew it 😘");
+    }
+</script>
+
+</body>
+</html>
