@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>For You ❤️</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
@@ -10,58 +14,66 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
             overflow: hidden;
         }
 
         .box {
-            width: 400px;
-            padding: 30px;
-            background-color: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.25);
-            border-radius: 15px;
+            width: 420px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border-radius: 20px;
             text-align: center;
             position: relative;
         }
 
         h1 {
-            margin-bottom: 30px;
-            color: #333;
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
+            margin-bottom: 35px;
+            color: #d63384;
         }
 
-        /* Yes button - gradient */
+        /* Yes button */
         #yes {
-            padding: 12px 25px;
+            padding: 12px 30px;
             font-size: 18px;
+            font-weight: 500;
             border: none;
-            border-radius: 25px;
+            border-radius: 30px;
             background: linear-gradient(45deg, #6a11cb, #2575fc);
             color: white;
             cursor: pointer;
             margin-right: 20px;
-            transition: transform 0.2s;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
         }
 
         #yes:hover {
             transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
-        /* No button - gradient */
+        /* No button */
         #no {
-            padding: 12px 25px;
+            padding: 12px 30px;
             font-size: 18px;
+            font-weight: 500;
             border: none;
-            border-radius: 25px;
+            border-radius: 30px;
             background: linear-gradient(45deg, #ff416c, #ff4b2b);
             color: white;
             cursor: pointer;
-            position: fixed; /* move anywhere on the screen */
-            transition: transform 0.2s;
+            position: fixed;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
         }
 
         #no:hover {
             transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
     </style>
 </head>
@@ -76,7 +88,6 @@
 <script>
     const noBtn = document.getElementById("no");
 
-    // Move the button once per hover
     noBtn.addEventListener("mouseenter", () => {
         const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
         const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
@@ -86,7 +97,7 @@
     });
 
     function yesClicked() {
-        alert("Yay! I knew it!");
+        alert("Yay! I knew it! ❤️");
     }
 </script>
 
