@@ -28,18 +28,18 @@
             text-align: center;
             position: relative;
         }
-        .footer {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 16px;
-            width: 100%;
-        }
 
         h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 42px;
             margin-bottom: 35px;
             color: #d63384;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         /* Yes button */
@@ -52,7 +52,6 @@
             background: linear-gradient(45deg, #6a11cb, #2575fc);
             color: white;
             cursor: pointer;
-            margin-right: 20px;
             letter-spacing: 1px;
             transition: all 0.3s ease;
         }
@@ -74,7 +73,7 @@
             cursor: pointer;
             position: fixed;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         #no:hover {
