@@ -5,53 +5,58 @@
     <title>For You ❤️</title>
     <style>
         body {
+            margin: 0;
             height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            overflow: hidden;
-            position: relative;
+            background-color: #f0f0f0; /* plain background */
+            overflow: hidden; /* prevent scrollbars when No moves */
+        }
+
+        .box {
+            width: 400px;
+            padding: 30px;
+            background-color: white; /* box background */
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 15px;
+            text-align: center;
+            position: relative; /* for Yes button positioning */
         }
 
         h1 {
-            color: #fff;
             margin-bottom: 30px;
-            text-align: center;
+            color: #333;
         }
 
-        .buttons {
-            position: relative;
-        }
-
-        button {
+        #yes {
             padding: 12px 25px;
             font-size: 18px;
             border: none;
             border-radius: 25px;
-            cursor: pointer;
-        }
-
-        #yes {
             background-color: #4CAF50;
             color: white;
+            cursor: pointer;
             margin-right: 20px;
         }
 
         #no {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
             background-color: #f44336;
             color: white;
-            position: absolute;
+            cursor: pointer;
+            position: absolute; /* will move anywhere */
         }
     </style>
 </head>
 <body>
 
-    <h1>Will you be mine forever? 💕</h1>
-
-    <div class="buttons">
+    <div class="box">
+        <h1>Will you be mine forever? 💕</h1>
         <button id="yes" onclick="yesClicked()">Yes 😍</button>
         <button id="no">No 🙈</button>
     </div>
@@ -59,10 +64,11 @@
     <script>
         const noBtn = document.getElementById("no");
 
-        // make the button move every time mouse enters
+        // Move No button anywhere in the window on hover
         noBtn.addEventListener("mouseenter", moveButton);
 
         function moveButton() {
+            // get the full window width and height
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
