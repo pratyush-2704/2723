@@ -133,7 +133,7 @@ noBtn.addEventListener("mouseenter", () => {
     noBtn.textContent = phrases[randomIndex];
 });
 
-// "Yes" click: show romantic message
+// "Yes" click: show romantic message inside the box
 yesBtn.addEventListener("click", () => {
     box.innerHTML = "";
     const message = document.createElement("h1");
@@ -149,12 +149,12 @@ yesBtn.addEventListener("click", () => {
     setTimeout(() => { message.style.opacity = 1; }, 50);
 });
 
-// "No" click: hide box and show full-page message
+// "No" click: hide box and show full-page message outside it
 noBtn.addEventListener("click", () => {
     // Hide the box
     box.style.display = "none";
 
-    // Create full-page message
+    // Create full-page message outside the box
     const noMessage = document.createElement("div");
     noMessage.textContent = "Aww, maybe next time 😢";
     noMessage.style.position = "fixed";
@@ -173,6 +173,7 @@ noBtn.addEventListener("click", () => {
     noMessage.style.textAlign = "center";
     noMessage.style.padding = "20px";
 
+    // Append directly to body (outside the box)
     document.body.appendChild(noMessage);
 });
 </script>
