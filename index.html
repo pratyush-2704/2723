@@ -12,17 +12,17 @@
             align-items: center;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0; /* plain background */
-            overflow: hidden; /* prevent scrollbars when No moves */
+            overflow: hidden; /* prevent scrollbars */
         }
 
         .box {
             width: 400px;
             padding: 30px;
-            background-color: white; /* box background */
+            background-color: white;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             border-radius: 15px;
             text-align: center;
-            position: relative; /* for Yes button positioning */
+            position: relative;
         }
 
         h1 {
@@ -49,7 +49,7 @@
             background-color: #f44336;
             color: white;
             cursor: pointer;
-            position: absolute; /* will move anywhere */
+            position: fixed; /* so it can move anywhere on screen */
         }
     </style>
 </head>
@@ -64,11 +64,11 @@
     <script>
         const noBtn = document.getElementById("no");
 
-        // Move No button anywhere in the window on hover
+        // This ensures it moves endlessly
         noBtn.addEventListener("mouseenter", moveButton);
 
         function moveButton() {
-            // get the full window width and height
+            // get the full window size
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
