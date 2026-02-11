@@ -13,6 +13,7 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #ff9a9e, #fad0c4);
             overflow: hidden;
+            position: relative;
         }
 
         h1 {
@@ -58,7 +59,8 @@
     <script>
         const noBtn = document.getElementById("no");
 
-        noBtn.addEventListener("mouseover", moveButton);
+        // make the button move every time mouse enters
+        noBtn.addEventListener("mouseenter", moveButton);
 
         function moveButton() {
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
@@ -75,4 +77,3 @@
 
 </body>
 </html>
-
