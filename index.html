@@ -28,6 +28,12 @@
             text-align: center;
             position: relative;
         }
+        .footer {
+            displey: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+            width: 100%;
+        }
 
         h1 {
             font-family: 'Great Vibes', cursive;
@@ -81,8 +87,10 @@
 
 <div class="box">
     <h1>Will you be mine forever?</h1>
-    <button id="yes" onclick="yesClicked()">Yes</button>
-    <button id="no">No</button>
+    <div class="footer">
+        <button id="yes" onclick="yesClicked()">Yes</button>
+        <button id="no">No</button>
+    </div>
 </div>
 
 <script>
