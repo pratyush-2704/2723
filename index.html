@@ -19,7 +19,7 @@
             width: 400px;
             padding: 30px;
             background-color: white;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            box-shadow: 0 0 20px rgba(0,0,0,0.25);
             border-radius: 15px;
             text-align: center;
             position: relative;
@@ -30,35 +30,47 @@
             color: #333;
         }
 
+        /* Yes button - gradient */
         #yes {
             padding: 12px 25px;
             font-size: 18px;
             border: none;
             border-radius: 25px;
-            background-color: #4CAF50;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
             color: white;
             cursor: pointer;
             margin-right: 20px;
+            transition: transform 0.2s;
         }
 
+        #yes:hover {
+            transform: scale(1.1);
+        }
+
+        /* No button - gradient */
         #no {
             padding: 12px 25px;
             font-size: 18px;
             border: none;
             border-radius: 25px;
-            background-color: #f44336;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
             color: white;
             cursor: pointer;
             position: fixed; /* move anywhere on the screen */
+            transition: transform 0.2s;
+        }
+
+        #no:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
 
 <div class="box">
-    <h1>Will you be mine forever? 💕</h1>
-    <button id="yes" onclick="yesClicked()">Yes 😍</button>
-    <button id="no">No 🙈</button>
+    <h1>Will you be mine forever?</h1>
+    <button id="yes" onclick="yesClicked()">Yes</button>
+    <button id="no">No</button>
 </div>
 
 <script>
@@ -74,7 +86,7 @@
     });
 
     function yesClicked() {
-        alert("Yayyy! ❤️ I knew it 😘");
+        alert("Yay! I knew it!");
     }
 </script>
 
