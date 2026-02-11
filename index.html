@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <title>For You</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -69,7 +70,7 @@ button {
     border: 2px solid #c2185b;
     color: #880e4f;
 }
-#no:hover { background: rgba(194,24,91,0.05); transform: scale(1.1); }
+#no:hover { background: rgba(194,24,91,0.05); transform: scale(1.1); pointer-events: none; }
 
 /* Full-page message */
 .message {
@@ -84,8 +85,8 @@ button {
     flex-direction: column;
     text-align: center;
     padding: 20px;
-    font-family: 'Parisienne', cursive; /* romantic font */
-    background: #ffe0e6; /* static soft background */
+    font-family: 'Satisfy', cursive; /* Romantic font */
+    background: #ffe0e6;
     overflow: hidden;
 }
 
@@ -94,7 +95,13 @@ button {
     font-size: 38px;
     color: #c2185b;
     text-shadow: 0 0 8px #f06292, 0 0 15px #e91e63;
-    line-height: 1.5; /* line spacing */
+    line-height: 1.5;
+}
+
+/* Bold "I Love You" */
+.message h1 .bold {
+    font-weight: 900;
+    font-size: 42px;
 }
 
 /* Floating hearts */
@@ -165,13 +172,13 @@ noBtn.addEventListener("mouseenter", () => {
     noBtn.textContent = phrases[randomIndex];
 });
 
-// Yes click: show romantic message with line breaks and floating hearts
+// Yes click: show romantic message with line breaks and bold "I Love You"
 yesBtn.addEventListener("click", () => {
     box.style.display = "none";
     messageDiv.innerHTML = "";
 
     const message = document.createElement("h1");
-    message.innerHTML = "I knew you'd say yes! 💖<br>You just made me the happiest person ever!<br>I Love You and Happy Valentine’s Day";
+    message.innerHTML = `I knew you'd say yes! 💖<br>Niku inko option eyyatledu anuko 😉 <br><span class="bold">I Love You</span><br>Happy Valentines day`;
     messageDiv.appendChild(message);
 
     // Add floating hearts
@@ -186,15 +193,7 @@ yesBtn.addEventListener("click", () => {
     }
 });
 
-// No click: show sad message
-noBtn.addEventListener("click", () => {
-    box.style.display = "none";
-    messageDiv.innerHTML = "";
-
-    const noMessage = document.createElement("h1");
-    noMessage.innerHTML = "Aww, maybe next time 😢<br>Don't worry, still love you!"; // multiple lines
-    messageDiv.appendChild(noMessage);
-});
+// Removed No button click entirely
 </script>
 
 </body>
