@@ -12,16 +12,12 @@
 body {
     margin: 0;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #ffdde1, #f7c1c8);
     overflow: hidden;
-    padding: 20px;
-    transition: background 1s ease;
 }
 
+/* Main box */
 .box {
     width: 100%;
     max-width: 420px;
@@ -39,18 +35,13 @@ h1 {
     font-size: 36px;
     margin-bottom: 35px;
     color: #c2185b;
-    text-shadow:
-        0 0 5px #f06292,
-        0 0 10px #e91e63,
-        0 0 20px #c2185b;
+    text-shadow: 0 0 5px #f06292, 0 0 10px #e91e63, 0 0 20px #c2185b;
 }
 
 .footer {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 20px;
-    position: relative;
 }
 
 button {
@@ -69,34 +60,17 @@ button {
     color: white;
     border: none;
 }
-
-#yes:hover {
-    background: #ad1457;
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(194, 24, 91, 0.4);
-}
+#yes:hover { background: #ad1457; transform: scale(1.1); }
 
 #no {
     background: transparent;
     border: 2px solid #c2185b;
     color: #880e4f;
     position: relative;
-    box-shadow: 0 0 3px rgba(194, 24, 91, 0.2);
 }
+#no:hover { background: rgba(194,24,91,0.05); transform: scale(1.1); }
 
-#no:hover {
-    background: rgba(194, 24, 91, 0.05);
-    transform: scale(1.1);
-    box-shadow: 0 0 5px rgba(194, 24, 91, 0.25);
-}
-
-/* Responsive font sizes */
-@media (max-width: 480px) {
-    h1 { font-size: 28px; }
-    button { font-size: 16px; padding: 10px 20px; }
-}
-
-/* Full page message div */
+/* Message div full-page */
 .message {
     position: fixed;
     top: 0;
@@ -106,39 +80,63 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
+    flex-direction: column;
     text-align: center;
     padding: 20px;
-    flex-direction: column;
-    background: transparent;
-    transition: background 1s ease;
-}
-
-/* Gradient animation for message */
-.message.active {
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(-45deg, #ffdde1, #f7c1c8, #ffe0b3, #fcb6b6);
     background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite;
+    animation: gradientBG 15s ease infinite;
+    overflow: hidden;
 }
 
+/* Animated gradient */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #e91e63;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+    animation: floatHeart linear infinite;
+    opacity: 0.8;
+}
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #e91e63;
+    border-radius: 50%;
+}
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: 10px; top: 0; }
+
+@keyframes floatHeart {
+    0% { transform: translateY(0) rotate(-45deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    100% { transform: translateY(-800px) rotate(-45deg); opacity: 0; }
+}
 </style>
 </head>
 <body>
 
-<!-- Separate div for messages -->
 <div class="message"></div>
 
-<!-- Main Box -->
 <div class="box">
     <h1>Will you be my Valentine<br>and be mine forever?</h1>
     <div class="footer">
         <button id="yes">Yes ❤️</button>
-        <button id="no">No 💔</button>        
+        <button id="no">No 💔</button>
     </div>
 </div>
 
@@ -148,33 +146,26 @@ const yesBtn = document.getElementById("yes");
 const box = document.querySelector(".box");
 const messageDiv = document.querySelector(".message");
 
-// Fun hover phrases for "No" button
-const phrases = [
-    "Nice try!", "Can't touch this! 😂", "Haha!", "Too slow!",
-    "Missed me!", "Try again! 😜", "Almost!", "Better luck next time 😏"
-];
+// Fun hover phrases
+const phrases = ["Nice try!", "Can't touch this! 😂", "Haha!", "Too slow!", "Missed me!", "Try again! 😜", "Almost!", "Better luck next time 😏"];
 
-// Make "No" button dodge on hover
+// "No" button dodge
 noBtn.addEventListener("mouseenter", () => {
     const maxX = box.clientWidth - noBtn.offsetWidth;
     const maxY = box.clientHeight - noBtn.offsetHeight;
-
     const x = Math.random() * maxX;
     const y = Math.random() * maxY;
-
     noBtn.style.position = 'absolute';
     noBtn.style.left = x + 'px';
     noBtn.style.top = y + 'px';
-
     const randomIndex = Math.floor(Math.random() * phrases.length);
     noBtn.textContent = phrases[randomIndex];
 });
 
-// "Yes" click: show romantic message
+// Yes click
 yesBtn.addEventListener("click", () => {
-    box.style.display = "none"; // hide box
-    messageDiv.innerHTML = "";   // clear previous messages
-    messageDiv.classList.add("active"); // animated background
+    box.style.display = "none";
+    messageDiv.innerHTML = "";
 
     const message = document.createElement("h1");
     message.innerHTML = "I knew you'd say yes! 💖<br>You just made me the happiest person ever!<br>I Love You and Happy Valentine’s Day";
@@ -182,25 +173,30 @@ yesBtn.addEventListener("click", () => {
     message.style.fontFamily = "'Great Vibes', cursive";
     message.style.fontSize = "32px";
     message.style.textShadow = "0 0 5px #f06292, 0 0 10px #e91e63";
-    message.style.opacity = 0;
-    message.style.transition = "opacity 1s";
-
     messageDiv.appendChild(message);
-    setTimeout(() => { message.style.opacity = 1; }, 50);
+
+    // Add floating hearts
+    for(let i=0; i<30; i++){
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.animationDuration = (5 + Math.random()*10) + "s";
+        heart.style.width = (10 + Math.random()*20) + "px";
+        heart.style.height = heart.style.width;
+        messageDiv.appendChild(heart);
+    }
 });
 
-// "No" click: show sad message
+// No click
 noBtn.addEventListener("click", () => {
     box.style.display = "none";
-    messageDiv.innerHTML = "";   // clear previous messages
-    messageDiv.classList.add("active"); // animated background
+    messageDiv.innerHTML = "";
 
     const noMessage = document.createElement("h1");
     noMessage.textContent = "Aww, maybe next time 😢";
     noMessage.style.color = "#880e4f";
     noMessage.style.fontSize = "36px";
     noMessage.style.fontWeight = "700";
-
     messageDiv.appendChild(noMessage);
 });
 </script>
