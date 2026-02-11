@@ -3,9 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>For You</title>
+
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
     height: 100vh;
     display: flex;
@@ -15,6 +19,8 @@ body {
     background: linear-gradient(135deg, #ffdde1, #f7c1c8);
     overflow: hidden;
 }
+
+/* Main box styling */
 .box {
     width: 100%;
     max-width: 420px;
@@ -25,19 +31,22 @@ body {
     text-align: center;
     position: relative;
 }
+
 .box h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 36px;
     color: #c2185b;
     margin-bottom: 35px;
     text-shadow: 0 0 5px #f06292, 0 0 10px #e91e63;
-    visibility: hidden;
 }
+
 .footer {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
+
+/* Buttons */
 button {
     padding: 12px 30px;
     font-size: 18px;
@@ -48,18 +57,22 @@ button {
     transition: all 0.3s ease;
     min-width: 120px;
 }
+
 #yes {
     background: #e91e63;
     color: white;
     border: none;
 }
 #yes:hover { background: #ad1457; transform: scale(1.1); }
+
 #no {
     background: transparent;
     border: 2px solid #c2185b;
     color: #880e4f;
 }
 #no:hover { background: rgba(194,24,91,0.05); transform: scale(1.1); pointer-events: none; }
+
+/* Full-page message */
 .message {
     position: fixed;
     top: 0;
@@ -72,27 +85,39 @@ button {
     flex-direction: column;
     text-align: center;
     padding: 20px;
-    font-family: 'Satisfy', cursive;
+    font-family: 'Satisfy', cursive; /* Romantic font */
     background: #ffe0e6;
     overflow: hidden;
 }
+
+/* Text container to prevent blinking */
 .message-text {
     position: relative;
-    z-index: 10;
+    z-index: 10; /* above hearts */
 }
+
+/* Message text styling */
 .message-text h1 {
     font-size: 38px;
     color: #c2185b;
     text-shadow: 0 0 8px #f06292, 0 0 15px #e91e63;
     line-height: 1.5;
-    visibility: hidden;
-    backface-visibility: hidden;
-    transform: translateZ(0);
 }
+
+/* Bold "I Love You" */
 .message-text h1 .bold {
     font-weight: 900;
     font-size: 42px;
 }
+
+.message-text h1 .highlight {
+    font-weight: 700;
+    font-size: 42px;
+    background: #ffccd5;
+    padding: 0 10px;
+    border-radius: 8px;
+}
+/* Floating hearts */
 .heart {
     position: absolute;
     width: 20px;
@@ -101,7 +126,7 @@ button {
     transform: rotate(-45deg);
     animation: floatHeart linear infinite;
     opacity: 0.8;
-    pointer-events: none;
+    pointer-events: none; /* don’t interfere with text */
 }
 .heart::before,
 .heart::after {
@@ -114,17 +139,23 @@ button {
 }
 .heart::before { top: -10px; left: 0; }
 .heart::after { left: 10px; top: 0; }
+
 @keyframes floatHeart {
     0% { transform: translateY(0) rotate(-45deg); opacity: 0; }
     10% { opacity: 0.8; }
     100% { transform: translateY(-800px) rotate(-45deg); opacity: 0; }
 }
+
 </style>
 </head>
 <body>
+
+<!-- Full-page message div -->
 <div class="message">
-    <div class="message-text"></div>
+    <div class="message-text"></div> <!-- separate text container -->
 </div>
+
+<!-- Main box -->
 <div class="box">
     <h1>Will you be my Valentine<br>and be mine forever?</h1>
     <div class="footer">
@@ -132,58 +163,55 @@ button {
         <button id="no">No 💔</button>
     </div>
 </div>
+
 <script>
 const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const box = document.querySelector(".box");
 const messageDiv = document.querySelector(".message");
 const messageText = document.querySelector(".message-text");
+
+// Fun hover phrases for No button
 const phrases = ["Nice try!", "Can't touch this! 😂", "Haha!", "Too slow!", "Missed me!", "Try again! 😜", "Almost!", "Better luck next time 😏"];
 
+// Make No button move anywhere on the page
 noBtn.addEventListener("mouseenter", () => {
     const pageWidth = window.innerWidth - noBtn.offsetWidth;
     const pageHeight = window.innerHeight - noBtn.offsetHeight;
     const x = Math.random() * pageWidth;
     const y = Math.random() * pageHeight;
+
     noBtn.style.position = 'fixed';
     noBtn.style.left = x + 'px';
     noBtn.style.top = y + 'px';
+
     const randomIndex = Math.floor(Math.random() * phrases.length);
     noBtn.textContent = phrases[randomIndex];
 });
 
+// Yes click: show romantic message with emojis and bold "I Love You"
 yesBtn.addEventListener("click", () => {
     box.style.display = "none";
     messageText.innerHTML = "";
-    const message = document.createElement("h1");
-    message.innerHTML = `I knew you'd say yes! 💖<br>Niku inko option eyyatledu anuko<br><span class="bold">I Love You ❤️</span><br>Happy Valentines Day 💌`;
+
+    const message = document.createElement("h1bold
+    message.innerHTML = `I knew you'd say yes! 💖<br>Niku inko option eyyatledu anuko 😉<br><span class="highlight">I Love You ❤️</span><br>Happy Valentines Day 💌`;
     messageText.appendChild(message);
-    for(let i=0;i<30;i++){
-        const heart=document.createElement("div");
+
+    // Add floating hearts behind the text
+    for(let i=0; i<30; i++){
+        const heart = document.createElement("div");
         heart.classList.add("heart");
-        heart.style.left=Math.random()*100+"%";
-        heart.style.animationDuration=(5+Math.random()*10)+"s";
-        heart.style.width=(10+Math.random()*20)+"px";
-        heart.style.height=heart.style.width;
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.animationDuration = (5 + Math.random()*10) + "s";
+        heart.style.width = (10 + Math.random()*20) + "px";
+        heart.style.height = heart.style.width;
         messageDiv.appendChild(heart);
     }
 });
 
-// Ensure fonts are loaded before showing text
-document.fonts.ready.then(() => {
-    const boxText = document.querySelector(".box h1");
-    if(boxText) boxText.style.visibility = 'visible';
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            mutation.addedNodes.forEach(node => {
-                if(node.nodeType===1 && node.matches('h1')){
-                    node.style.visibility = 'visible';
-                }
-            });
-        });
-    });
-    observer.observe(document.querySelector(".message-text"), { childList: true });
-});
+// No button click removed completely
 </script>
+
 </body>
 </html>
