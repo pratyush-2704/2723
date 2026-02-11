@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>For You ❤️</title>
+    <title>For You</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
     <style>
@@ -33,7 +32,7 @@
             font-family: 'Great Vibes', cursive;
             font-size: 42px;
             margin-bottom: 35px;
-            color: #d63384;
+            color: #e91e63;
         }
 
         .footer {
@@ -42,46 +41,42 @@
             gap: 20px;
         }
 
-        /* Yes button */
         #yes {
             padding: 12px 30px;
             font-size: 18px;
             font-weight: 500;
             border: none;
             border-radius: 30px;
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            background: #e91e63;
             color: white;
             cursor: pointer;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            position: relative;
-            left: 100px;
         }
 
         #yes:hover {
+            background: #c2185b;
             transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.4);
         }
 
-        /* No button */
         #no {
             padding: 12px 30px;
             font-size: 18px;
             font-weight: 500;
-            border: none;
             border-radius: 30px;
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
-            color: white;
+            background: transparent;
+            border: 2px solid #e91e63;
+            color: #e91e63;
             cursor: pointer;
             position: fixed;
             letter-spacing: 1px;
             transition: all 0.2s ease;
-            left: 160px;
         }
 
         #no:hover {
+            background: rgba(233, 30, 99, 0.1);
             transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
     </style>
 </head>
@@ -90,8 +85,8 @@
 <div class="box">
     <h1>Will you be mine forever?</h1>
     <div class="footer">
-        <button id="yes" onclick="yesClicked()">Yes</button>
-        <button id="no">No</button>
+        <button id="yes" onclick="yesClicked()">Yes ❤️</button>
+        <button id="no">No 💔</button>
     </div>
 </div>
 
@@ -107,7 +102,7 @@
     });
 
     function yesClicked() {
-        alert("Yay! I knew it! ❤️");
+        alert("Yay! I knew it!");
     }
 </script>
 
