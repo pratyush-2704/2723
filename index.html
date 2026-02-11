@@ -7,9 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -24,14 +22,16 @@ body {
 }
 
 .box {
-        width: 420px;
-        padding: 40px;
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        border-radius: 20px;
-        text-align: center;
-        position: relative;
-    }
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    transition: all 0.5s ease;
+}
 
 h1 {
     font-family: 'Great Vibes', cursive;
@@ -79,7 +79,7 @@ button {
     background: transparent;
     border: 2px solid #c2185b;
     color: #880e4f;
-    position: relative; /* relative inside the box */
+    position: relative;
     box-shadow: 0 0 3px rgba(194, 24, 91, 0.2);
 }
 
@@ -91,13 +91,8 @@ button {
 
 /* Responsive font sizes */
 @media (max-width: 480px) {
-    h1 {
-        font-size: 28px;
-    }
-    button {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
+    h1 { font-size: 28px; }
+    button { font-size: 16px; padding: 10px 20px; }
 }
 </style>
 </head>
@@ -117,21 +112,14 @@ const yesBtn = document.getElementById("yes");
 const box = document.querySelector(".box");
 
 const phrases = [
-    "Nice try!",
-    "Can't touch this! 😂",
-    "Haha!",
-    "Too slow!",
-    "Missed me!",
-    "Try again! 😜",
-    "Almost!",
-    "Better luck next time 😏"
+    "Nice try!", "Can't touch this! 😂", "Haha!", "Too slow!",
+    "Missed me!", "Try again! 😜", "Almost!", "Better luck next time 😏"
 ];
 
 // Make the "No" button move inside the box when hovered
 noBtn.addEventListener("mouseenter", () => {
-    const container = box;
-    const maxX = container.clientWidth - noBtn.offsetWidth;
-    const maxY = container.clientHeight - noBtn.offsetHeight;
+    const maxX = box.clientWidth - noBtn.offsetWidth;
+    const maxY = box.clientHeight - noBtn.offsetHeight;
 
     const x = Math.random() * maxX;
     const y = Math.random() * maxY;
@@ -140,27 +128,25 @@ noBtn.addEventListener("mouseenter", () => {
     noBtn.style.left = x + 'px';
     noBtn.style.top = y + 'px';
 
-    // Change text to a random playful phrase
     const randomIndex = Math.floor(Math.random() * phrases.length);
     noBtn.textContent = phrases[randomIndex];
 });
 
-// "Yes" button click: replace buttons with romantic message
+// "Yes" button click: replace entire box content
 yesBtn.addEventListener("click", () => {
-    // Remove footer (buttons)
-    box.querySelector(".footer").remove();
+    // Clear the box content
+    box.innerHTML = "";
 
-    // Create message element
-    const message = document.createElement("h2");
+    // Create romantic message
+    const message = document.createElement("h1");
     message.textContent = "I knew you'd say yes! 💖 You just made me the happiest person ever!";
-
-    // Style the message
+    
+    // Style it
     message.style.color = "#c2185b";
     message.style.fontFamily = "'Great Vibes', cursive";
     message.style.textAlign = "center";
-    message.style.fontSize = "28px";
+    message.style.fontSize = "32px";
     message.style.textShadow = "0 0 5px #f06292, 0 0 10px #e91e63";
-    message.style.marginTop = "30px";
     message.style.opacity = 0;
     message.style.transition = "opacity 1s";
 
