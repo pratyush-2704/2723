@@ -110,6 +110,13 @@ button {
     font-size: 42px;
 }
 
+    .message-text h1 .highlight {
+    font-weight: 700;
+    font-size: 42px;
+    background: #ffccd5;
+    padding: 0 10px;
+    border-radius: 8px;
+}
 /* Floating hearts */
 .heart {
     position: absolute;
@@ -188,7 +195,7 @@ yesBtn.addEventListener("click", () => {
     messageText.innerHTML = "";
 
     const message = document.createElement("h1");
-    message.innerHTML = `I knew you'd say yes! 💖<br>Niku inko option eyyatledu anuko 😉<br><span class="bold">I Love You ❤️</span><br>Happy Valentines Day 💌`;
+    message.innerHTML = `I knew you'd say yes! 💖<br>Niku inko option eyyatledu anuko 😉<br><span class="highlight">I Love You ❤️</span><br>Happy Valentines Day 💌`;
     messageText.appendChild(message);
 
     // Add floating hearts behind the text
