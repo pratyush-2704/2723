@@ -97,7 +97,7 @@ button {
 </style>
 </head>
 <body>
-
+<div class="message"></div>
 <div class="box">
     <h1>Will you be my Valentine<br>and be mine forever?</h1>
     <div class="footer">
@@ -145,7 +145,7 @@ yesBtn.addEventListener("click", () => {
     message.style.textShadow = "0 0 5px #f06292, 0 0 10px #e91e63";
     message.style.opacity = 0;
     message.style.transition = "opacity 1s";
-    box.appendChild(message);
+    document.querySelector(".box").appendChild(message);
     setTimeout(() => { message.style.opacity = 1; }, 50);
 });
 
