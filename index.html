@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffdde1, #f7c1c8); /* a bit lighter background */
+            background: linear-gradient(135deg, #ffdde1, #f7c1c8);
             overflow: hidden;
         }
 
@@ -76,7 +76,7 @@
             position: fixed;
             letter-spacing: 1px;
             transition: all 0.2s ease;
-            box-shadow: 0 0 3px rgba(194, 24, 91, 0.2); /* much lighter shadow */
+            box-shadow: 0 0 3px rgba(194, 24, 91, 0.2);
         }
 
         #no:hover {
@@ -98,13 +98,17 @@
 
 <script>
     const noBtn = document.getElementById("no");
+    const phrases = ["Nice try!", "Can't touch this!", "Haha!", "Too slow!", "Missed me!", "Try again!"];
 
     noBtn.addEventListener("mouseenter", () => {
         const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
         const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
+
+        // Change text to a random sarcastic phrase
+        const randomIndex = Math.floor(Math.random() * phrases.length);
+        noBtn.textContent = phrases[randomIndex] + " 💔";
     });
 
     function yesClicked() {
