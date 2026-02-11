@@ -5,6 +5,9 @@
 <title>For You</title>
 <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
+    .box h1, .message-text h1 {
+    visibility: hidden;
+}
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
     height: 100vh;
@@ -131,6 +134,12 @@ button {
     </div>
 </div>
 <script>
+    document.fonts.ready.then(() => {
+    document.querySelectorAll('.box h1, .message-text h1').forEach(el=>{
+        el.style.visibility = 'visible';
+    });
+});
+
 const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const box = document.querySelector(".box");
