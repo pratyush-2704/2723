@@ -19,6 +19,7 @@ body {
     background: linear-gradient(135deg, #ffdde1, #f7c1c8);
     overflow: hidden;
     padding: 20px;
+    transition: background 1s ease;
 }
 
 .box {
@@ -109,12 +110,27 @@ button {
     text-align: center;
     padding: 20px;
     flex-direction: column;
+    background: transparent;
+    transition: background 1s ease;
+}
+
+/* Gradient animation for message */
+.message.active {
+    background: linear-gradient(-45deg, #ffdde1, #f7c1c8, #ffe0b3, #fcb6b6);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 </style>
 </head>
 <body>
 
-<!-- Separate div for Yes message -->
+<!-- Separate div for messages -->
 <div class="message"></div>
 
 <!-- Main Box -->
@@ -132,13 +148,13 @@ const yesBtn = document.getElementById("yes");
 const box = document.querySelector(".box");
 const messageDiv = document.querySelector(".message");
 
-// Fun hover phrases
+// Fun hover phrases for "No" button
 const phrases = [
     "Nice try!", "Can't touch this! 😂", "Haha!", "Too slow!",
     "Missed me!", "Try again! 😜", "Almost!", "Better luck next time 😏"
 ];
 
-// "No" hover: button dodges
+// Make "No" button dodge on hover
 noBtn.addEventListener("mouseenter", () => {
     const maxX = box.clientWidth - noBtn.offsetWidth;
     const maxY = box.clientHeight - noBtn.offsetHeight;
@@ -154,9 +170,11 @@ noBtn.addEventListener("mouseenter", () => {
     noBtn.textContent = phrases[randomIndex];
 });
 
-// "Yes" click: show message in external div
+// "Yes" click: show romantic message
 yesBtn.addEventListener("click", () => {
-    box.style.display = "none"; // hide the box
+    box.style.display = "none"; // hide box
+    messageDiv.innerHTML = "";   // clear previous messages
+    messageDiv.classList.add("active"); // animated background
 
     const message = document.createElement("h1");
     message.innerHTML = "I knew you'd say yes! 💖<br>You just made me the happiest person ever!<br>I Love You and Happy Valentine’s Day";
@@ -171,9 +189,11 @@ yesBtn.addEventListener("click", () => {
     setTimeout(() => { message.style.opacity = 1; }, 50);
 });
 
-// "No" click: hide box and show full-page message
+// "No" click: show sad message
 noBtn.addEventListener("click", () => {
     box.style.display = "none";
+    messageDiv.innerHTML = "";   // clear previous messages
+    messageDiv.classList.add("active"); // animated background
 
     const noMessage = document.createElement("h1");
     noMessage.textContent = "Aww, maybe next time 😢";
@@ -181,8 +201,6 @@ noBtn.addEventListener("click", () => {
     noMessage.style.fontSize = "36px";
     noMessage.style.fontWeight = "700";
 
-    // Clear any existing message and show
-    messageDiv.innerHTML = "";
     messageDiv.appendChild(noMessage);
 });
 </script>
