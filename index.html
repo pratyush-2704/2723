@@ -49,7 +49,7 @@
             background-color: #f44336;
             color: white;
             cursor: pointer;
-            position: fixed; /* so it can move anywhere on the screen */
+            position: fixed; /* move anywhere on the screen */
         }
     </style>
 </head>
@@ -64,20 +64,13 @@
 <script>
     const noBtn = document.getElementById("no");
 
+    // Move the button once per hover
     noBtn.addEventListener("mouseenter", () => {
-        // Move the button 10-15 times rapidly
-        let moves = 0;
-        const maxMoves = 12; // you can adjust 10–15
-        const interval = setInterval(() => {
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
-            noBtn.style.left = x + "px";
-            noBtn.style.top = y + "px";
-
-            moves++;
-            if (moves >= maxMoves) clearInterval(interval);
-        }, 100); // 100ms between moves, you can make it faster/slower
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
     });
 
     function yesClicked() {
