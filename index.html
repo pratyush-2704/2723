@@ -1,137 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>For You</title>
+<meta charset="UTF-8">
+<title>For You</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffdde1, #f7c1c8);
-            overflow: hidden;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        .box {
-            width: 420px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #f7c1c8);
+    overflow: hidden;
+    padding: 20px;
+}
 
-        h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 42px;
-            margin-bottom: 35px;
-            color: #c2185b;
-            text-shadow:
-                0 0 5px #f06292,
-                0 0 10px #e91e63,
-                0 0 20px #c2185b;
-        }
+.box {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+}
 
-        .footer {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    margin-bottom: 35px;
+    color: #c2185b;
+    text-shadow:
+        0 0 5px #f06292,
+        0 0 10px #e91e63,
+        0 0 20px #c2185b;
+}
 
-        #yes {
-            padding: 12px 30px;
-            font-size: 18px;
-            font-weight: 500;
-            border: none;
-            border-radius: 30px;
-            background: #e91e63;
-            color: white;
-            cursor: pointer;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-            left:160px;
-        }
+.footer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+}
 
-        #yes:hover {
-            background: #ad1457;
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(194, 24, 91, 0.4);
-        }
+button {
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
 
-        #no {
-            padding: 12px 30px;
-            font-size: 18px;
-            font-weight: 500;
-            border-radius: 30px;
-            background: transparent;
-            border: 2px solid #c2185b;
-            color: #880e4f;
-            cursor: pointer;
-            position: fixed;
-            letter-spacing: 1px;
-            transition: all 0.2s ease;
-            box-shadow: 0 0 3px rgba(194, 24, 91, 0.2);
-            left:475px;
-        }
+#yes {
+    background: #e91e63;
+    color: white;
+    border: none;
+}
 
-        #no:hover {
-            background: rgba(194, 24, 91, 0.05);
-            transform: scale(1.1);
-            box-shadow: 0 0 5px rgba(194, 24, 91, 0.25);
-        }
+#yes:hover {
+    background: #ad1457;
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(194, 24, 91, 0.4);
+}
+
+#no {
+    background: transparent;
+    border: 2px solid #c2185b;
+    color: #880e4f;
+    position: relative; /* relative inside the box */
+    box-shadow: 0 0 3px rgba(194, 24, 91, 0.2);
+}
+
+#no:hover {
+    background: rgba(194, 24, 91, 0.05);
+    transform: scale(1.1);
+    box-shadow: 0 0 5px rgba(194, 24, 91, 0.25);
+}
+
+/* Responsive font sizes */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px;
     }
-    </style>
+    button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+</style>
 </head>
 <body>
 
 <div class="box">
-    <!-- <h1>Will you be my Valentine and be mine forever?</h1> -->
-    <h1>
-      Will you be my Valentine<br>
-      and be mine forever?
-    </h1>
+    <h1>Will you be my Valentine<br>and be mine forever?</h1>
     <div class="footer">
-        <button id="yes" onclick="yesClicked()">Yes ❤️</button>
+        <button id="yes">Yes ❤️</button>
         <button id="no">No 💔</button>        
     </div>
 </div>
 
 <script>
-    const noBtn = document.getElementById("no");
-    // const phrases = ["Nice try!", "Can't touch this!", "Haha!", "Too slow!", "Missed me!", "Try again!"];
-      const phrases = [
-        "Nice try!",
-        "Can't touch this! 😂",
-        "Haha!",
-        "Too slow!",
-        "Missed me!",
-        "Try again! 😜",
-        "Almost!",
-        "Better luck next time 😏"
-    ];
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const box = document.querySelector(".box");
 
-    noBtn.addEventListener("mouseenter", () => {
-        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-        noBtn.style.left = x + "px";
-        noBtn.style.top = y + "px";
+const phrases = [
+    "Nice try!",
+    "Can't touch this! 😂",
+    "Haha!",
+    "Too slow!",
+    "Missed me!",
+    "Try again! 😜",
+    "Almost!",
+    "Better luck next time 😏"
+];
 
-        // Change text to a random sarcastic phrase
-        const randomIndex = Math.floor(Math.random() * phrases.length);
-        noBtn.textContent = phrases[randomIndex];
-    });
+// Make the "No" button move inside the box when hovered
+noBtn.addEventListener("mouseenter", () => {
+    const container = box;
+    const maxX = container.clientWidth - noBtn.offsetWidth;
+    const maxY = container.clientHeight - noBtn.offsetHeight;
 
-    function yesClicked() {
-        alert("Yay! I knew it!");
-    }
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.position = 'absolute';
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+
+    // Change text to a random playful phrase
+    const randomIndex = Math.floor(Math.random() * phrases.length);
+    noBtn.textContent = phrases[randomIndex];
+});
+
+// "Yes" button click: replace buttons with romantic message
+yesBtn.addEventListener("click", () => {
+    // Remove footer (buttons)
+    box.querySelector(".footer").remove();
+
+    // Create message element
+    const message = document.createElement("h2");
+    message.textContent = "I knew you'd say yes! 💖 You just made me the happiest person ever!";
+
+    // Style the message
+    message.style.color = "#c2185b";
+    message.style.fontFamily = "'Great Vibes', cursive";
+    message.style.textAlign = "center";
+    message.style.fontSize = "28px";
+    message.style.textShadow = "0 0 5px #f06292, 0 0 10px #e91e63";
+    message.style.marginTop = "30px";
+    message.style.opacity = 0;
+    message.style.transition = "opacity 1s";
+
+    box.appendChild(message);
+
+    // Fade in
+    setTimeout(() => { message.style.opacity = 1; }, 50);
+});
 </script>
 
 </body>
