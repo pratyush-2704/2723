@@ -98,7 +98,17 @@
 
 <script>
     const noBtn = document.getElementById("no");
-    const phrases = ["Nice try!", "Can't touch this!", "Haha!", "Too slow!", "Missed me!", "Try again!"];
+    // const phrases = ["Nice try!", "Can't touch this!", "Haha!", "Too slow!", "Missed me!", "Try again!"];
+      const phrases = [
+        "Nice try 😏",
+        "Can't touch this 👐",
+        "Haha! 😂",
+        "Too slow 🐢",
+        "Missed me 😎",
+        "Try again 🤷‍♂️",
+        "Almost! 😜",
+        "Better luck next time 😏"
+    ];
 
     noBtn.addEventListener("mouseenter", () => {
         const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
@@ -108,7 +118,7 @@
 
         // Change text to a random sarcastic phrase
         const randomIndex = Math.floor(Math.random() * phrases.length);
-        noBtn.textContent = phrases[randomIndex] + " 💔";
+        noBtn.textContent = phrases[randomIndex];
     });
 
     function yesClicked() {
