@@ -1,10 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Hello</title>
+    <meta charset="UTF-8">
+    <title>For You ❤️</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .buttons {
+            position: relative;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        #yes {
+            background-color: #4CAF50;
+            color: white;
+            margin-right: 20px;
+        }
+
+        #no {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
-  <h1>Hello 👋</h1>
-  <p>This is my greeting page.</p>
+
+    <h1>Will you be mine forever? 💕</h1>
+
+    <div class="buttons">
+        <button id="yes" onclick="yesClicked()">Yes 😍</button>
+        <button id="no">No 🙈</button>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("no");
+
+        noBtn.addEventListener("mouseover", moveButton);
+
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        }
+
+        function yesClicked() {
+            alert("Yayyy! ❤️ I knew it 😘");
+        }
+    </script>
+
 </body>
 </html>
+
