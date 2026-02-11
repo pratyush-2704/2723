@@ -90,8 +90,14 @@ button {
     overflow: hidden;
 }
 
+/* Text container to prevent blinking */
+.message-text {
+    position: relative;
+    z-index: 10; /* above hearts */
+}
+
 /* Message text styling */
-.message h1 {
+.message-text h1 {
     font-size: 38px;
     color: #c2185b;
     text-shadow: 0 0 8px #f06292, 0 0 15px #e91e63;
@@ -99,7 +105,7 @@ button {
 }
 
 /* Bold "I Love You" */
-.message h1 .bold {
+.message-text h1 .bold {
     font-weight: 900;
     font-size: 42px;
 }
@@ -113,6 +119,7 @@ button {
     transform: rotate(-45deg);
     animation: floatHeart linear infinite;
     opacity: 0.8;
+    pointer-events: none; /* don’t interfere with text */
 }
 .heart::before,
 .heart::after {
@@ -137,7 +144,9 @@ button {
 <body>
 
 <!-- Full-page message div -->
-<div class="message"></div>
+<div class="message">
+    <div class="message-text"></div> <!-- separate text container -->
+</div>
 
 <!-- Main box -->
 <div class="box">
@@ -153,6 +162,7 @@ const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const box = document.querySelector(".box");
 const messageDiv = document.querySelector(".message");
+const messageText = document.querySelector(".message-text");
 
 // Fun hover phrases for No button
 const phrases = ["Nice try!", "Can't touch this! 😂", "Haha!", "Too slow!", "Missed me!", "Try again! 😜", "Almost!", "Better luck next time 😏"];
@@ -172,16 +182,16 @@ noBtn.addEventListener("mouseenter", () => {
     noBtn.textContent = phrases[randomIndex];
 });
 
-// Yes click: show romantic message with line breaks and bold "I Love You"
+// Yes click: show romantic message with emojis and bold "I Love You"
 yesBtn.addEventListener("click", () => {
     box.style.display = "none";
-    messageDiv.innerHTML = "";
+    messageText.innerHTML = "";
 
     const message = document.createElement("h1");
-    message.innerHTML = `I knew you'd say yes! 💖<br>Niku inko option eyyatledu anuko 😉 <br><span class="bold">I Love You</span><br>Happy Valentines day`;
-    messageDiv.appendChild(message);
+    message.innerHTML = `I knew you'd say yes! 💖<br>Niku inko option eyyatledu anuko 😉<br><span class="bold">I Love You ❤️</span><br>Happy Valentines Day 💌`;
+    messageText.appendChild(message);
 
-    // Add floating hearts
+    // Add floating hearts behind the text
     for(let i=0; i<30; i++){
         const heart = document.createElement("div");
         heart.classList.add("heart");
@@ -193,7 +203,7 @@ yesBtn.addEventListener("click", () => {
     }
 });
 
-// Removed No button click entirely
+// No button click removed completely
 </script>
 
 </body>
