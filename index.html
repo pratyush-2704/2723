@@ -160,22 +160,24 @@ button{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    font-size:18px;
-    background:white;
-    width:28px;
-    height:28px;
+    font-size:16px;
+    color:white;                     /* white arrow */
+    background:linear-gradient(135deg,#ff6f91,#e91e63); /* romantic pink */
+    width:30px;
+    height:30px;
     border-radius:50%;
     display:flex;
     justify-content:center;
     align-items:center;
     cursor:pointer;
-    box-shadow:0 4px 10px rgba(233, 30, 99, 0.2);
+    box-shadow:0 6px 15px rgba(233, 30, 99, 0.3);
     user-select:none;
-    transition:0.2s;
+    transition:all 0.3s ease;
 }
 
 .arrow:hover{
     transform:translateY(-50%) scale(1.1);
+    box-shadow:0 8px 20px rgba(233, 30, 99, 0.45);
 }
 
 .left{ left:8px; }
