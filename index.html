@@ -31,7 +31,7 @@ body{
     padding:40px 20px;
     background:white;
     border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    box-shadow:0 10px 25px rgba(233, 30, 99, 0.15);
     text-align:center;
 }
 
@@ -92,27 +92,27 @@ button{
     background:#ffe0e6;
 }
 
+/* Slider Container */
 .slider{
     width:90%;
     max-width:420px;
     height:500px;
     position:relative;
     overflow:hidden;
-    display:flex;
-    align-items:center;
+    border-radius:20px;
 }
 
+/* Slides Wrapper */
 .slides{
     display:flex;
-    width:100%;
-    transition:transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    height:100%;
+    transition:transform 0.7s ease-in-out;
 }
 
-/* Card - all same size */
+/* Individual Card */
 .card{
-    flex-shrink:0;           /* prevent shrinking */
-    width:100%;              /* full slider width */
-    height:100%;             /* full slider height */
+    flex:0 0 100%;
+    height:100%;
     background:white;
     border-radius:20px;
     padding:40px 25px;
@@ -121,7 +121,7 @@ button{
     justify-content:center;
     align-items:center;
     text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    box-shadow:0 15px 35px rgba(233, 30, 99, 0.15);
 }
 
 /* Image */
@@ -143,7 +143,6 @@ button{
     line-height:1.6;
 }
 
-/* Glow effect */
 .glow{
     font-size:42px;
     animation:glow 1.5s infinite alternate;
@@ -168,7 +167,7 @@ button{
     justify-content:center;
     align-items:center;
     cursor:pointer;
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    box-shadow:0 5px 15px rgba(233, 30, 99, 0.2);
     user-select:none;
     transition:0.2s;
 }
@@ -180,19 +179,19 @@ button{
 .left{ left:10px; }
 .right{ right:10px; }
 
-/* Dots */
+/* Small Elegant Dots */
 .nav{
     position:absolute;
     bottom:15px;
     width:100%;
     display:flex;
     justify-content:center;
-    gap:5px;
+    gap:4px;
 }
 
 .dot{
-    width:5px;
-    height:5px;
+    width:4px;
+    height:4px;
     background:#ccc;
     border-radius:50%;
     transition:0.3s;
@@ -200,7 +199,7 @@ button{
 
 .active{
     background:#e91e63;
-    transform:scale(1.4);
+    transform:scale(1.2);
 }
 
 </style>
@@ -291,11 +290,17 @@ function updateSlider(){
 }
 
 right.addEventListener("click",()=>{
-    if(index<3){ index++; updateSlider(); }
+    if(index<3){
+        index++;
+        updateSlider();
+    }
 });
 
 left.addEventListener("click",()=>{
-    if(index>0){ index--; updateSlider(); }
+    if(index>0){
+        index--;
+        updateSlider();
+    }
 });
 </script>
 
