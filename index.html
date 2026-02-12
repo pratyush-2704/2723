@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For You</title>
+<title>For You ❤️</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@ body {
     overflow: hidden;
 }
 
-/* Main box styling */
+/* Main box */
 .box {
     width: 100%;
     max-width: 420px;
@@ -34,18 +34,19 @@ body {
     border-radius: 20px;
     text-align: center;
     position: relative;
+    transition: all 0.5s ease;
 }
 
 /* Devil emoji */
 .devil {
-    font-size: 50px;
+    font-size: 55px;
     margin-bottom: 10px;
-    animation: bounce 1.5s infinite;
+    animation: bounce 1.5s infinite ease-in-out;
 }
 
 @keyframes bounce {
     0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-10px); }
 }
 
 .box h1 {
@@ -91,7 +92,6 @@ button {
 }
 #no:hover {
     background: rgba(194,24,91,0.05);
-    transform: scale(1.1);
 }
 
 /* Full-page message */
@@ -117,33 +117,45 @@ button {
     z-index: 10;
 }
 
+/* Message styling */
 .message-text h1 {
-    font-size: 38px;
+    font-size: 40px;
     color: #ba1757;
     text-shadow: 0 0 8px #f06292, 0 0 15px #e91e63;
-    line-height: 1.6;
+    line-height: 1.9;
 }
 
-/* Animated lines */
+/* Smooth animated lines */
 .message-text h1 span.line {
     display: block;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s ease forwards;
+    transform: translateY(40px) scale(0.95);
+    margin-bottom: 25px; /* MORE SPACE */
+    animation: smoothFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* Highlight */
 .highlight {
     font-weight: 900;
-    font-size: 42px;
+    font-size: 46px;
     background: #ffccd5;
-    padding: 0 10px;
-    border-radius: 8px;
+    padding: 6px 18px;
+    border-radius: 14px;
 }
 
-@keyframes fadeUp {
-    to {
+/* Ultra smooth animation */
+@keyframes smoothFade {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    60% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(-6px) scale(1.03);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -169,14 +181,8 @@ button {
     border-radius: 50%;
 }
 
-.heart::before {
-    top: -10px;
-    left: 0;
-}
-.heart::after {
-    left: 10px;
-    top: 0;
-}
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: 10px; top: 0; }
 
 @keyframes floatHeart {
     0% {
@@ -194,12 +200,12 @@ button {
 
 <body>
 
-<!-- Full-page message -->
+<!-- Message Screen -->
 <div class="message">
     <div class="message-text"></div>
 </div>
 
-<!-- Main box -->
+<!-- Main Box -->
 <div class="box">
     <div class="devil">😈</div>
     <h1>Will you be my Valentine<br>and be mine forever?</h1>
@@ -243,19 +249,21 @@ noBtn.addEventListener("mouseenter", () => {
     noBtn.textContent = phrases[randomIndex];
 });
 
-/* Yes button click */
+/* Yes click */
 yesBtn.addEventListener("click", () => {
-    box.style.display = "none";
+    box.style.opacity = "0";
+    setTimeout(() => box.style.display = "none", 500);
+
     messageDiv.style.display = "flex";
     messageText.innerHTML = "";
 
     const message = document.createElement("h1");
 
     message.innerHTML = `
-        <span class="line" style="animation-delay: 0s">I knew you'd say yes! 💖</span>
-        <span class="line" style="animation-delay: 1s">Niku inko option eyyatledu anuko 😉</span>
-        <span class="line highlight line" style="animation-delay: 2s">I Love You ❤️</span>
-        <span class="line" style="animation-delay: 3s">Happy Valentines Day 💌</span>
+        <span class="line" style="animation-delay: 0.4s">I knew you'd say yes! 💖</span>
+        <span class="line" style="animation-delay: 1.8s">Niku inko option eyyatledu anuko 😉</span>
+        <span class="line highlight line" style="animation-delay: 3.2s">I Love You ❤️</span>
+        <span class="line" style="animation-delay: 4.8s">Happy Valentines Day 💌</span>
     `;
 
     messageText.appendChild(message);
@@ -264,8 +272,8 @@ yesBtn.addEventListener("click", () => {
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.style.left = Math.random() * 100 + "%";
-        heart.style.animationDuration = (5 + Math.random()*10) + "s";
-        heart.style.width = (10 + Math.random()*20) + "px";
+        heart.style.animationDuration = (6 + Math.random()*8) + "s";
+        heart.style.width = (12 + Math.random()*20) + "px";
         heart.style.height = heart.style.width;
         messageDiv.appendChild(heart);
     }
@@ -274,4 +282,3 @@ yesBtn.addEventListener("click", () => {
 
 </body>
 </html>
-
