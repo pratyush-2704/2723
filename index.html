@@ -31,7 +31,7 @@ body{
     padding:40px 20px;
     background:white;
     border-radius:20px;
-    box-shadow:0 10px 25px rgba(233, 30, 99, 0.15);
+    box-shadow:0 15px 35px rgba(233, 30, 99, 0.15);
     text-align:center;
 }
 
@@ -71,6 +71,7 @@ button{
     background:#e91e63;
     color:white;
 }
+
 #yes:hover{
     transform:scale(1.08);
 }
@@ -100,6 +101,7 @@ button{
     position:relative;
     overflow:hidden;
     border-radius:20px;
+    background:white; /* important fix */
 }
 
 /* Slides Wrapper */
@@ -107,20 +109,20 @@ button{
     display:flex;
     height:100%;
     transition:transform 0.7s ease-in-out;
+    will-change:transform;
 }
 
 /* Individual Card */
 .card{
     flex:0 0 100%;
     height:100%;
-    background:white;
-    border-radius:20px;
     padding:40px 25px;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
+    background:white;
     box-shadow:0 15px 35px rgba(233, 30, 99, 0.15);
 }
 
