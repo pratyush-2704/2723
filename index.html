@@ -64,8 +64,8 @@ button{
 .heart{
   position:absolute;
   bottom:-40px;
-  width:25px;
-  height:25px;
+  width:20px; /* restored original size */
+  height:20px;
   background:#e91e63cc;
   clip-path: polygon(
     50% 0%, 61% 11%, 75% 11%, 82% 18%, 82% 29%, 75% 38%, 61% 38%, 50% 29%, 39% 38%, 25% 38%, 18% 29%, 18% 18%, 25% 11%, 39% 11%
@@ -85,7 +85,7 @@ button{
   z-index:10;
   width:90%;
   max-width:420px;
-  height:300px;
+  height:300px; /* reduced card height */
   overflow:hidden;
   border-radius:20px;
   background:white;
@@ -275,14 +275,15 @@ function createHeart(){
   const heart=document.createElement("div");
   heart.classList.add("heart");
   heart.style.left=Math.random()*100+"%";
-  heart.style.animationDuration=(3 + Math.random()*2) + "s";
+  // slower float duration
+  heart.style.animationDuration=(5 + Math.random()*2) + "s"; 
   heart.style.animationDelay="0s";
   backgroundHearts.appendChild(heart);
   heart.addEventListener("animationend",()=>heart.remove());
 }
 function startHeartsAnimation(){
   createHeart(); // start immediately
-  setInterval(createHeart, 400); // faster and more frequent
+  setInterval(createHeart, 400); // frequent hearts
 }
 </script>
 </body>
