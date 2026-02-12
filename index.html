@@ -95,23 +95,22 @@ button{
 .slider{
     width:90%;
     max-width:420px;
-    height:500px;
+    height:500px;              /* fixed height */
     position:relative;
     overflow:hidden;
-    display:flex;
-    align-items:center;
 }
 
 .slides{
     display:flex;
-    width:100%;
+    width:400%;                /* 4 cards = 400% */
+    height:100%;               /* full height */
     transition:transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card{
-    flex-shrink:0;
-    width:100%;
-    height:100%;
+    width:100%;                /* each card full slider width */
+    height:100%;               /* each card full slider height */
+    flex:0 0 100%;             /* IMPORTANT: prevents resizing */
     background:white;
     border-radius:20px;
     padding:40px 25px;
@@ -122,6 +121,7 @@ button{
     text-align:center;
     box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
+
 
 .card img{
     width:140px;
@@ -189,8 +189,8 @@ button{
 }
 
 .dot{
-    width:4px;                 /* smaller size */
-    height:4px;                /* smaller size */
+    width:5px;                 /* smaller size */
+    height:5px;                /* smaller size */
     background:#ccc;
     border-radius:50%;
     transition:0.3s;
