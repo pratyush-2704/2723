@@ -102,7 +102,7 @@ button {
 .slider {
   width: 90%;
   max-width: 420px;
-  height: 300px; /* Compact card height */
+  height: 300px;
   position: relative;
   overflow: hidden;
   border-radius: 20px;
@@ -136,9 +136,9 @@ button {
   width: 100px;
   margin-bottom: 15px;
   animation: float 3s ease-in-out infinite;
-  border-radius: 15px; /* Rounded corners for doodle images */
+  border-radius: 15px;
   object-fit: cover;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes float {
@@ -179,7 +179,7 @@ button {
   transform: translateY(-50%);
   font-size: 16px;
   color: white;
-  background: #f6a5b8; /* soft rose-coral */
+  background: #f6a5b8;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -242,24 +242,24 @@ button {
 <div class="story">
   <div class="slider">
     <div class="slides">
-      <!-- Replace the src URLs below with your actual doodle/recreation images -->
+      <!-- Example real image URLs - Replace these with your doodle images -->
       <div class="card">
-        <img src="https://your-image-host.com/doodle1.png" alt="Doodle 1" />
+        <img src="https://i.imgur.com/3XOXa5U.png" alt="Doodle 1" />
         <h2>I knew you'd say yes! 💖</h2>
       </div>
 
       <div class="card">
-        <img src="https://your-image-host.com/doodle2.png" alt="Doodle 2" />
+        <img src="https://i.imgur.com/RT5L0Sy.png" alt="Doodle 2" />
         <h2>Niku inko option eyyatledu anuko 😉</h2>
       </div>
 
       <div class="card">
-        <img src="https://your-image-host.com/doodle3.png" alt="Doodle 3" />
+        <img src="https://i.imgur.com/6TJMdZ9.png" alt="Doodle 3" />
         <h2 class="glow">I Love You ❤️</h2>
       </div>
 
       <div class="card">
-        <img src="https://your-image-host.com/doodle4.png" alt="Doodle 4" />
+        <img src="https://i.imgur.com/BuzDRGg.png" alt="Doodle 4" />
         <h2>Happy Valentines Day 💌</h2>
       </div>
     </div>
@@ -303,17 +303,15 @@ noBtn.addEventListener("mouseenter", () => {
 yesBtn.addEventListener("click", () => {
   box.style.display = "none";
   story.style.display = "flex";
-  updateSlider(); // Initialize arrows
+  updateSlider();
 });
 
 function updateSlider() {
   slides.style.transform = `translateX(-${index * 100}%)`;
 
-  // Update dots
   dots.forEach((dot) => dot.classList.remove("active"));
   dots[index].classList.add("active");
 
-  // Show/hide arrows
   left.style.display = index === 0 ? "none" : "flex";
   right.style.display = index === totalSlides - 1 ? "none" : "flex";
 }
