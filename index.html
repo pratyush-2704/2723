@@ -7,7 +7,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
 
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   height: 100vh;
@@ -20,6 +24,7 @@ body {
 }
 
 /* ---------------- FIRST SCREEN ---------------- */
+
 .box {
   width: 100%;
   max-width: 420px;
@@ -78,6 +83,7 @@ button {
 }
 
 /* ---------------- STORY SECTION ---------------- */
+
 .story {
   position: fixed;
   inset: 0;
@@ -112,9 +118,10 @@ button {
   filter: drop-shadow(0 0 2px #e91e63);
 }
 
+/* Hearts float up */
 @keyframes floatUp {
-  0% {transform: translateY(0) scale(1); opacity: 0.8;}
-  100% {transform: translateY(-400px) scale(0.5); opacity: 0;}
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  100% { transform: translateY(-400px) scale(0.5); opacity: 0; }
 }
 
 /* Slider Container */
@@ -151,16 +158,19 @@ button {
   background: white;
 }
 
-/* Emoji on card */
-.card .emoji {
-  font-size: 50px;
+/* Image */
+.card img {
+  width: 100px;
   margin-bottom: 15px;
   animation: float 3s ease-in-out infinite;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes float {
-  0%, 100% {transform: translateY(0);}
-  50% {transform: translateY(-8px);}
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .card h2 {
@@ -176,8 +186,8 @@ button {
 }
 
 @keyframes glow {
-  from {text-shadow: 0 0 6px #ff4d88;}
-  to {text-shadow: 0 0 16px #ff0066;}
+  from { text-shadow: 0 0 6px #ff4d88; }
+  to { text-shadow: 0 0 16px #ff0066; }
 }
 
 /* Arrows */
@@ -235,7 +245,6 @@ button {
 </style>
 </head>
 <body>
-
 <div class="box">
   <div class="devil">😈</div>
   <h1>Will you be my Valentine<br />and be mine forever?</h1>
@@ -251,19 +260,28 @@ button {
   <div class="slider">
     <div class="slides">
       <div class="card">
-        <div class="emoji">🥰</div>
+        <img src="https://i.imgur.com/O9wB2Av.png" alt="Doodle 1" />
         <h2>I knew you'd say yes! 💖</h2>
       </div>
+
       <div class="card">
-        <div class="emoji">😉</div>
+        <img src="https://i.imgur.com/O9wB2Av.png" alt="Doodle 2" />
         <h2>Niku inko option eyyatledu anuko 😉</h2>
       </div>
+
       <div class="card">
-        <div class="emoji glow">❤️</div>
+        <img src="https://i.imgur.com/O9wB2Av.png" alt="Doodle 3" />
         <h2 class="glow">I Love You ❤️</h2>
       </div>
+
+      <!-- Local image slide inserted BEFORE last slide -->
       <div class="card">
-        <div class="emoji">💌</div>
+        <img src="57628f01-e042-44f1-bfaa-5045cff415f8.png" alt="Special Image" />
+        <h2>Look at this! 💝</h2>
+      </div>
+
+      <div class="card">
+        <img src="https://i.imgur.com/O9wB2Av.png" alt="Doodle 4" />
         <h2>Happy Valentines Day 💌</h2>
       </div>
     </div>
@@ -276,6 +294,7 @@ button {
       <div class="dot"></div>
       <div class="dot"></div>
       <div class="dot"></div>
+      <div class="dot"></div> <!-- new dot for the local image -->
     </div>
   </div>
 </div>
@@ -293,6 +312,7 @@ const backgroundHearts = document.querySelector(".background-hearts");
 
 let index = 0;
 const totalSlides = slides.children.length;
+
 const phrases = ["Nice try!", "Too slow! 😂", "Haha!", "Missed me! 😜"];
 
 noBtn.addEventListener("mouseenter", () => {
@@ -313,27 +333,39 @@ yesBtn.addEventListener("click", () => {
 
 function updateSlider() {
   slides.style.transform = `translateX(-${index * 100}%)`;
-  dots.forEach(dot => dot.classList.remove("active"));
+  dots.forEach((dot) => dot.classList.remove("active"));
   dots[index].classList.add("active");
   left.style.display = index === 0 ? "none" : "flex";
   right.style.display = index === totalSlides - 1 ? "none" : "flex";
 }
 
-right.addEventListener("click", () => { if (index < totalSlides - 1) { index++; updateSlider(); } });
-left.addEventListener("click", () => { if (index > 0) { index--; updateSlider(); } });
+right.addEventListener("click", () => {
+  if (index < totalSlides - 1) {
+    index++;
+    updateSlider();
+  }
+});
 
+left.addEventListener("click", () => {
+  if (index > 0) {
+    index--;
+    updateSlider();
+  }
+});
+
+/* Background hearts animation */
 function createHeart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
   heart.style.left = Math.random() * 100 + "%";
-  heart.style.animationDuration = (2 + Math.random() * 3) + "s"; // 2-5s speed
-  heart.style.animationDelay = Math.random() * 3 + "s";
+  heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+  heart.style.animationDelay = Math.random() * 5 + "s";
   backgroundHearts.appendChild(heart);
   heart.addEventListener("animationend", () => heart.remove());
 }
 
 function startHeartsAnimation() {
-  setInterval(createHeart, 400); // faster hearts
+  setInterval(createHeart, 500); // slightly faster hearts
 }
 </script>
 </body>
