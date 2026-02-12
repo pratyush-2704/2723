@@ -97,7 +97,7 @@ button{
 .slider{
     width:90%;
     max-width:420px;
-    height:300px; /* Compact card height */
+    height:300px; /* Reduced height */
     position:relative;
     overflow:hidden;
     border-radius:20px;
@@ -160,24 +160,22 @@ button{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    font-size:16px;
-    color:white;
-    background:#f6a5b8;   /* soft rose-coral */
-    width:30px;
-    height:30px;
+    font-size:18px;
+    background:white;
+    width:28px;
+    height:28px;
     border-radius:50%;
     display:flex;
     justify-content:center;
     align-items:center;
     cursor:pointer;
-    box-shadow:0 4px 12px rgba(233, 30, 99, 0.2);
+    box-shadow:0 4px 10px rgba(233, 30, 99, 0.2);
     user-select:none;
-    transition:all 0.3s ease, opacity 0.3s ease;
+    transition:0.2s;
 }
 
 .arrow:hover{
     transform:translateY(-50%) scale(1.1);
-    box-shadow:0 6px 18px rgba(233, 30, 99, 0.35);
 }
 
 .left{ left:8px; }
@@ -194,7 +192,7 @@ button{
 }
 
 .dot{
-    width:6px;
+    width:6px;   /* Balanced size */
     height:6px;
     background:#d8a3b5;
     border-radius:50%;
@@ -205,6 +203,7 @@ button{
     background:#e91e63;
     transform:scale(1.25);
 }
+
 </style>
 </head>
 <body>
@@ -267,7 +266,6 @@ const left=document.querySelector(".left");
 const right=document.querySelector(".right");
 
 let index=0;
-const totalSlides = slides.children.length;
 
 const phrases=["Nice try!","Too slow! 😂","Haha!","Missed me! 😜"];
 
@@ -283,30 +281,23 @@ noBtn.addEventListener("mouseenter",()=>{
 yesBtn.addEventListener("click",()=>{
     box.style.display="none";
     story.style.display="flex";
-    updateSlider(); // Initialize arrows
 });
 
 function updateSlider(){
     slides.style.transform=`translateX(-${index*100}%)`;
-    
-    // Update dots
     dots.forEach(dot=>dot.classList.remove("active"));
     dots[index].classList.add("active");
-    
-    // Show/hide arrows
-    left.style.display = index === 0 ? "none" : "flex";
-    right.style.display = index === totalSlides-1 ? "none" : "flex";
 }
 
 right.addEventListener("click",()=>{
-    if(index < totalSlides-1){
+    if(index<3){
         index++;
         updateSlider();
     }
 });
 
 left.addEventListener("click",()=>{
-    if(index > 0){
+    if(index>0){
         index--;
         updateSlider();
     }
