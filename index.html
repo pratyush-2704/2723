@@ -63,20 +63,20 @@ button{
 }
 .heart{
   position:absolute;
-  bottom:-30px;
-  width:15px;
-  height:15px;
+  bottom:-40px;
+  width:25px;
+  height:25px;
   background:#e91e63cc;
   clip-path: polygon(
     50% 0%, 61% 11%, 75% 11%, 82% 18%, 82% 29%, 75% 38%, 61% 38%, 50% 29%, 39% 38%, 25% 38%, 18% 29%, 18% 18%, 25% 11%, 39% 11%
   );
-  opacity:0.8;
+  opacity:0.9;
   animation: floatUp linear forwards;
-  filter: drop-shadow(0 0 2px #e91e63);
+  filter: drop-shadow(0 0 3px #e91e63);
 }
 @keyframes floatUp{
-  0%{transform:translateY(0) scale(1); opacity:0.8;}
-  100%{transform:translateY(-400px) scale(0.5); opacity:0;}
+  0%{transform:translateY(0) scale(1); opacity:0.9;}
+  100%{transform:translateY(-500px) scale(0.6); opacity:0;}
 }
 
 /* Slider */
@@ -167,8 +167,8 @@ button{
   z-index:15;
 }
 .dot{
-  width:6px;
-  height:6px;
+  width:5px;
+  height:5px;
   background:#d8a3b5;
   border-radius:50%;
   transition:0.3s ease;
@@ -275,12 +275,15 @@ function createHeart(){
   const heart=document.createElement("div");
   heart.classList.add("heart");
   heart.style.left=Math.random()*100+"%";
-  heart.style.animationDuration=(4+Math.random()*3)+"s";
-  heart.style.animationDelay=Math.random()*5+"s";
+  heart.style.animationDuration=(3 + Math.random()*2) + "s";
+  heart.style.animationDelay="0s";
   backgroundHearts.appendChild(heart);
   heart.addEventListener("animationend",()=>heart.remove());
 }
-function startHeartsAnimation(){setInterval(createHeart,600);}
+function startHeartsAnimation(){
+  createHeart(); // start immediately
+  setInterval(createHeart, 400); // faster and more frequent
+}
 </script>
 </body>
 </html>
