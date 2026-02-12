@@ -94,23 +94,25 @@ button{
 
 .slider{
     width:90%;
-    max-width:420px;
-    height:500px;              /* fixed height */
+    /* max-width:420px; */
+    height:420px;
     position:relative;
     overflow:hidden;
+    display:flex;
+    align-items:center;
 }
 
 .slides{
     display:flex;
-    width:400%;                /* 4 cards = 400% */
-    height:100%;               /* full height */
+    width:100%;
     transition:transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Card - all same size */
 .card{
-    width:100%;                /* each card full slider width */
-    height:100%;               /* each card full slider height */
-    flex:0 0 100%;             /* IMPORTANT: prevents resizing */
+    flex-shrink:0;           /* prevent shrinking */
+    width:100%;              /* full slider width */
+    height:100%;             /* full slider height */
     background:white;
     border-radius:20px;
     padding:40px 25px;
@@ -122,7 +124,7 @@ button{
     box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
-
+/* Image */
 .card img{
     width:140px;
     margin-bottom:25px;
@@ -141,6 +143,7 @@ button{
     line-height:1.6;
 }
 
+/* Glow effect */
 .glow{
     font-size:42px;
     animation:glow 1.5s infinite alternate;
@@ -177,20 +180,19 @@ button{
 .left{ left:10px; }
 .right{ right:10px; }
 
-/* ---------------- SMALLER DOTS ---------------- */
-
+/* Dots */
 .nav{
     position:absolute;
     bottom:15px;
     width:100%;
     display:flex;
     justify-content:center;
-    gap:4px;
+    gap:5px;
 }
 
 .dot{
-    width:5px;                 /* smaller size */
-    height:5px;                /* smaller size */
+    width:5px;
+    height:5px;
     background:#ccc;
     border-radius:50%;
     transition:0.3s;
@@ -198,13 +200,14 @@ button{
 
 .active{
     background:#e91e63;
-    transform:scale(1.2);      /* softer zoom */
+    transform:scale(1.4);
 }
 
 </style>
 </head>
 <body>
 
+<!-- FIRST SCREEN -->
 <div class="box">
     <div class="devil">😈</div>
     <h1>Will you be my Valentine<br>and be mine forever?</h1>
@@ -214,6 +217,7 @@ button{
     </div>
 </div>
 
+<!-- STORY SECTION -->
 <div class="story">
     <div class="slider">
         <div class="slides">
