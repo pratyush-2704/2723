@@ -135,12 +135,15 @@ button {
   box-shadow: 0 12px 25px rgba(233, 30, 99, 0.15);
 }
 
+/* Slides Wrapper */
 .slides {
   display: flex;
   height: 100%;
   transition: transform 0.6s ease-in-out;
+  will-change: transform;
 }
 
+/* Individual Card */
 .card {
   flex: 0 0 100%;
   height: 100%;
@@ -153,24 +156,51 @@ button {
   background: white;
 }
 
-.card img {
-  width: 120px;
+/* Image */
+.card .img {
+  width: 100px;
   margin-bottom: 15px;
+  animation: float 3s ease-in-out infinite;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+  .card img{
+    width:140px;
+    margin-bottom:25px;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .card h2 {
   font-family: 'Satisfy', cursive;
   font-size: 24px;
   color: #ba1757;
+  line-height: 1.4;
 }
 
-/* ARROWS */
+.glow {
+  font-size: 28px;
+  animation: glow 1.5s infinite alternate;
+}
 
+@keyframes glow {
+  from { text-shadow: 0 0 6px #ff4d88; }
+  to { text-shadow: 0 0 16px #ff0066; }
+}
+
+/* Arrows */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
+  color: white;
+  /* background: #f6a5b8; */
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -178,15 +208,23 @@ button {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  color: #DE5D83;
+  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.2);
+  user-select: none;
+  transition: all 0.3s ease, opacity 0.3s ease;
+  z-index: 15;
   box-shadow: 0 2px 15px #FFA6C9;
+  color: #DE5D83;
+}
+
+.arrow:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 18px rgba(233, 30, 99, 0.35);
 }
 
 .left { left: 8px; }
 .right { right: 8px; }
 
-/* DOTS */
-
+/* Dots */
 .nav {
   position: absolute;
   bottom: 10px;
@@ -194,6 +232,7 @@ button {
   display: flex;
   justify-content: center;
   gap: 6px;
+  z-index: 15;
 }
 
 .dot {
@@ -201,10 +240,12 @@ button {
   height: 6px;
   background: #d8a3b5;
   border-radius: 50%;
+  transition: 0.3s ease;
 }
 
 .active {
   background: #e91e63;
+  transform: scale(1.25);
 }
 </style>
 </head>
