@@ -56,7 +56,6 @@ body {
   display: flex;
   justify-content: center;
   gap: 20px;
-  position: relative;
 }
 
 button {
@@ -132,6 +131,7 @@ button {
   overflow: hidden;
   border-radius: 20px;
   background: white;
+  box-shadow: 0 12px 25px rgba(233, 30, 99, 0.15);
 }
 
 .slides {
@@ -163,10 +163,13 @@ button {
   color: #ba1757;
 }
 
+/* ARROWS */
+
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  font-size: 16px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -175,10 +178,13 @@ button {
   align-items: center;
   cursor: pointer;
   color: #DE5D83;
+  box-shadow: 0 2px 15px #FFA6C9;
 }
 
 .left { left: 8px; }
 .right { right: 8px; }
+
+/* DOTS */
 
 .nav {
   position: absolute;
@@ -218,15 +224,30 @@ button {
   <div class="slider">
     <div class="slides">
       <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png">
         <h2>I knew you'd say yes! 💖</h2>
       </div>
+
       <div class="card">
-        <h2>You are so Special 💗</h2>
+        <h2>Niku inko option eyyatledu anuko 😉</h2>
       </div>
+
       <div class="card">
+        <img class="img" src="57628f01-e042-44f1-bfaa-5045cff415f8.png" alt="Special Image" />
+        <h2>Look at this! 💝</h2>
+      </div>
+
+      <div class="card">
+        <h2>You are so Special Vinnu 💗</h2>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2107/2107845.png">
         <h2>I Love You ❤️</h2>
       </div>
+
       <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616490.png">
         <h2>Happy Valentines Day 💘</h2>
       </div>
     </div>
@@ -236,6 +257,8 @@ button {
 
     <div class="nav">
       <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
       <div class="dot"></div>
       <div class="dot"></div>
       <div class="dot"></div>
@@ -256,9 +279,10 @@ const backgroundHearts = document.querySelector(".background-hearts");
 
 let index = 0;
 const totalSlides = slides.children.length;
+
 const phrases = ["Nice try!", "Too slow! 😂", "Haha!", "Missed me! 😜"];
 
-/* MOVE NO BUTTON (WORKS FOR BOTH MOBILE + DESKTOP) */
+/* ✅ MOBILE + LAPTOP WORKING LOGIC */
 function moveNoButton(e) {
   if (e) e.preventDefault();
 
@@ -272,7 +296,8 @@ function moveNoButton(e) {
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 
-  noBtn.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+  noBtn.textContent =
+    phrases[Math.floor(Math.random() * phrases.length)];
 }
 
 noBtn.addEventListener("mouseenter", moveNoButton);
